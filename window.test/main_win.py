@@ -3,22 +3,26 @@ from PyQt5.QtWidgets import (QWidget,QLabel,QHBoxLayout,QVBoxLayout,
                              )
 from PyQt5.QtCore import Qt
 
+#налаштування вікна
 test_win = QWidget()
 test_win.resize(600,500)
 test_win.setWindowTitle("Memory Card")
 
-
+#додавання кнопок
 btn_menu = QPushButton("Menu")
 btn_rest = QPushButton("Time")
 time_rest = QSpinBox()
 time_rest.setValue(30)
 lbl_rest = QLabel("minutes")
 
+#запитання
 lbl_qw = QLabel("Question")
 
+#відповідь
 box_ans = QGroupBox()
 box_ans.setTitle("Answers")
- 
+
+#4 відповіді
 rbn_list = list()
 rbn_group = QButtonGroup()
 for i in range (4):
@@ -26,20 +30,23 @@ for i in range (4):
     rbn_group.addButton(rbt)
     rbn_list.append(rbt)
 
+#кнопки
 box_result = QGroupBox()
 box_result.setTitle("Result")
 lbl_ans = QLabel("ans")
 lbl_result = QLabel("result")
 
+#перевірка відповіді
 btn_check = QPushButton("Check")
 
+#вертикальні та горизонтальні лінії
 main_line = QVBoxLayout()
 lineh1 = QHBoxLayout()
 lineh2 = QHBoxLayout()
 lineh3 = QHBoxLayout()
 lineh4 = QHBoxLayout()
 
-
+#прикріплюєм віджети на лінії
 lineh1.addWidget(btn_menu)
 lineh1.addStretch(3)
 lineh1.addWidget(btn_rest)
