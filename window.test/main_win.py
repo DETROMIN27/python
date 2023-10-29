@@ -30,6 +30,7 @@ for i in range (4):
     rbn_group.addButton(rbt)
     rbn_list.append(rbt)
 
+
 #кнопки
 box_result = QGroupBox()
 box_result.setTitle("Result")
