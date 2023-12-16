@@ -31,6 +31,10 @@ class MainWindow(QMainWindow):
         self.notes[name_note]={"text":"","teg":[]}
         write_json(self.notes,self.name_fail)
         self.set_note(name_note)        
+    def dell_note(self,name_note):
+        note = self.notes[name_note]
+        self.ui.txt_edit.clear()
+        self.ui.note_list2.clear()
         
         
     def connects(self):
