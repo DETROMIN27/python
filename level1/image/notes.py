@@ -58,10 +58,17 @@ class Ui_Notes(object):
         self.label.setGeometry(QtCore.QRect(540, 320, 342, 40))
         self.label.setObjectName("label")
         self.teg_find = QtWidgets.QLineEdit(self.main_win)
-        self.teg_find.setGeometry(QtCore.QRect(520, 560, 342, 40))
+        self.teg_find.setGeometry(QtCore.QRect(520, 560, 300, 40))
         self.teg_find.setStyleSheet("border-color: rgb(0, 0, 0);\n"
 "")
-        self.teg_find.setObjectName("teg_find")
+        self.teg_find.setObjectName("teg_find") 
+        self.btn_reset = QtWidgets.QPushButton(self.main_win)
+        self.btn_reset.setGeometry(QtCore.QRect(820, 560, 40, 40))
+        self.btn_reset.setStyleSheet("border-image: url(:/newPrefix/free-icon-font-cross-3917759.png);")
+        self.btn_reset.setText("")
+        self.btn_reset.setObjectName("btn_reset")
+
+
         self.btn_add_teg = QtWidgets.QPushButton(self.main_win)
         self.btn_add_teg.setGeometry(QtCore.QRect(760, 620, 62, 62))
         self.btn_add_teg.setStyleSheet("border-image: url(:/newPrefix/free-icon-font-user-add-3917698.png);")

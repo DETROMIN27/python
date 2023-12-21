@@ -1,11 +1,4 @@
 {
-    "test1": {
-        "text": "text1",
-        "teg": [
-            "teg1",
-            "teg2"
-        ]
-    },
     "curca": {
         "text": "yuewgyu3gr",
         "teg": []
@@ -13,5 +6,19 @@
     "": {
         "text": "",
         "teg": []
+    },
+    "t": {
+        "text": "",
+        "teg": [
+            "t",
+            "2e2"
+        ]
+    },
+    "c": {
+        "text": "",
+        "teg": [
+            "c",
+            "c"
+        ]
     }
 }
