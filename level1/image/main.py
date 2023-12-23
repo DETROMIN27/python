@@ -1,11 +1,11 @@
-from PyQt5.QtCore import Qt  
-from notes import Ui_Notes
-from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox
-from data import write_json, read_json 
+from PyQt5.QtCore import Qt  #імопртуємо Qt
+from notes import Ui_Notes  # імпоруємо Ui_Notes  з notes
+from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox #імпортуємо віджети
+from data import write_json, read_json # імпортуємо  write_json,resd_json
  
  
-class MainWindow(QMainWindow): 
-    def __init__(self): 
+class MainWindow(QMainWindow): # клас  MainWindow
+    def __init__(self): #
         super().__init__() 
         self.ui = Ui_Notes() 
         self.ui.setupUi(self) 
@@ -15,9 +15,9 @@ class MainWindow(QMainWindow):
         self.ui.note_list1.addItems(name_note) 
         name_note = name_note[0] 
         self.set_note(name_note) 
-        self.connects() 
+        self.connects()  
  
-    def set_note(self, name_note): 
+    def set_note(self, name_note): # задати нотатку
         note = self.notes[name_note] 
         self.ui.txt_edit.clear() 
         self.ui.txt_edit.setText(note["text"]) 
@@ -29,7 +29,7 @@ class MainWindow(QMainWindow):
         n = self.ui.note_list1.row(item[0]) 
         self.ui.note_list1.setCurrentRow(n)
     
-    def add_note(self): 
+    def add_note(self): # додати нотатку
         name_note, do = QInputDialog.getText(self, 
                                             "notes_edit", 
                                             "Введіть назву нової замітки") 
@@ -38,7 +38,7 @@ class MainWindow(QMainWindow):
         self.ui.note_list1.addItem(name_note) 
         self.set_note(name_note) 
 
-    def add_teg(self):
+    def add_teg(self): # додати тег
         name_teg, do = QInputDialog.getText(self, 
                                             "notes_edit", 
                                             "Введіть назву нового тега") 
@@ -48,7 +48,7 @@ class MainWindow(QMainWindow):
         self.ui.note_list2.addItem(name_teg)
 
     
-    def del_teg(self):
+    def del_teg(self): # видалити тег
         iter = self.ui.text_list.cuurentItem()
         name_teg = item.text()
         item = self.ui.note
@@ -59,7 +59,7 @@ class MainWindow(QMainWindow):
         self.ui.name_list1.takeItem(num)
 
  
-    def delete_note(self): 
+    def delete_note(self): # видалити нотатку 
         iter = self.ui.note_list1.currentItem() 
         name = iter.text()
         del self.notes[name]
@@ -67,7 +67,7 @@ class MainWindow(QMainWindow):
         write_json(self.notes,self.name_file) 
         self.ui.note_list1.takeItem(num)
      
-    def save_note (self):
+    def save_note (self): # зберегти нотатку
         iter = self.ui.note_list1.currentItem() 
         name = iter.text()
         text = self.ui.txt_edit.toPlainText()
@@ -78,7 +78,7 @@ class MainWindow(QMainWindow):
         mes.show()
         mes.exec()
 
-    def find_teg (self):
+    def find_teg (self): # знайти тег
         text = self.ui.teg_find.text()
         teg_notes = dict()
         for name_note in self.notes:
@@ -89,7 +89,7 @@ class MainWindow(QMainWindow):
         self.ui.note_list1.addItems(names)
         self.set_note(names[0])
 
-    def reset (self):
+    def reset (self): #заново
         self.ui.note_list1.clear()
         name_note = list(self.notes.keys()) 
         self.ui.note_list1.addItems(name_note) 
@@ -97,7 +97,7 @@ class MainWindow(QMainWindow):
         self.set_note(name_note) 
 
 
-    def connects(self):
+    def connects(self): #зєднання кнопок з їх функією
         self.ui.btn_add_note.clicked.connect(self.add_note)
         self.ui.btn_del_note.clicked.connect(self.delete_note)
         self.ui.btn_save_note.clicked.connect(self.save_note)
@@ -107,7 +107,7 @@ class MainWindow(QMainWindow):
         #self.ui.note_list1.currentItemChanged.connect(self.clicked_note)
         self.ui.btn_reset.clicked.connect(self.reset)
 
-    def clicked_note (self):
+    def clicked_note (self): #нажати на нотатку 
         iter = self.ui.note_list1.currentItem()
         name_note = iter.text()
         self.set_note(name_note)
